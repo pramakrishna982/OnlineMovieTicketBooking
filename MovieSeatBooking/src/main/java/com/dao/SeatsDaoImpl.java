@@ -16,6 +16,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.context.AppContext;
+import com.entity.Booking;
 import com.entity.Seats;
 
 //@Transactional
@@ -47,31 +48,42 @@ public class SeatsDaoImpl implements SeatsDao {
 		// return null;
 	}
 
-//	@Override
-//	public boolean update(Seats seat) {
-//		// TODO Auto-generated method stub
-//		return false;
-//	}
+	public List<Booking> getAlltickets() {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.getCurrentSession();
+		CriteriaBuilder cb = session.getCriteriaBuilder();
+		CriteriaQuery<Booking> cq = cb.createQuery(Booking.class);
+		Root<Booking> root = cq.from(Booking.class);
+		cq.select(root);
+		Query query = session.createQuery(cq);
+		return query.getResultList();
+	}
+	public Seats getUpdate(int seat_no) {
+		// TODO Auto-generated method stub
+		Session session = (Session) con.sessionFactory();
+		Transaction t = session.beginTransaction();
+		session.save(seat_no);
+		t.commit();
+		session.close();
+		return null;
+	}
+
+	public Seats getInsert(int seat_no, boolean seat_status) {
+		// TODO Auto-generated method stub
+		Seats s = new Seats();
+		s.setSeat_no(seat_no);
+		s.setSeat_status(true);
+		Session session = sessionFactory.getCurrentSession();
+		session.update(s);
+		System.out.println(seat_status);
+		System.out.println("Seat no from impl " + seat_no);
+		return s;
+	}
 
 	@Override
 	public Seats getSeat_No(int seat_no) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	public Seats getUpdate(int seat_no) {
-		// TODO Auto-generated method stub
-		Session session = (Session) con.sessionFactory();
-		Transaction t = session.beginTransaction();
-
-		session.save(seat_no);
-
-		t.commit();
-
-		session.close();
-		return null;
-
-		// return null;
 	}
 
 }

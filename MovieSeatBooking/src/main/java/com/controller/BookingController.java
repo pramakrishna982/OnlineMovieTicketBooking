@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import com.dao.SeatsDaoImpl;
+import com.entity.Booking;
 import com.entity.Seats;
 
 @Controller
@@ -32,14 +33,23 @@ public class BookingController {
 		theModel.addAttribute("seats", seat);
 		return "bookingseats";
 	}
-
-//	@GetMapping(value = "/updateseat")
-//	public String updateSeats(@RequestParam("seat_no") int seat_no, Model Model) {
-//		Seats seat = dao.getUpdate(seat_no);
-//		seat.setSeat_status(true);
-//		Model.addAttribute("update", seat);
-//		return "bookingseats";
-//		// return null;
-//
-//	}
+	
+	@GetMapping(value = "/submit")
+	public String insertSeats(@RequestParam("seat_no") int seat_no, boolean seat_status, Model Model) {
+	System.out.println("inside insert seat method");
+	Seats seat = dao.getInsert(seat_no, seat_status);
+	System.out.println("seat we want: "+seat_no);
+	//seat.setSeat_status(true);
+	System.out.println("seat status: "+seat_status);
+	Model.addAttribute("insert", seat);
+	return "bookingseats";
+	}
+	
+	@GetMapping(value = "/listtickets")
+	public String TicketBooking(Model theModel) {
+		System.out.println("ticketBooking  for arisha ");
+		List<Booking> ticket = dao.getAlltickets();
+		theModel.addAttribute("tickets", ticket);
+		return "bookingseats";
+	}
 }
