@@ -15,6 +15,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import com.dao.SeatsDaoImpl;
 import com.entity.Booking;
+import com.entity.Movie;
 import com.entity.Seats;
 
 @Controller
@@ -30,6 +31,8 @@ public class BookingController {
 	public String SeatBooking(Model theModel) {
 		System.out.println("In SeatBooking method ");
 		List<Seats> seat = dao.getAllSeats();
+		List<Movie> getmovie= dao.getMovie();
+		theModel.addAttribute("movies", getmovie);
 		theModel.addAttribute("seats", seat);
 		return "bookingseats";
 	}
@@ -46,10 +49,13 @@ public class BookingController {
 	}
 	
 	@GetMapping(value = "/listtickets")
-	public String TicketBooking(Model theModel) {
+	public String TicketBooking(Model theModel, Movie movie) {
 		System.out.println("ticketBooking  for arisha ");
 		List<Booking> ticket = dao.getAlltickets();
 		theModel.addAttribute("tickets", ticket);
+		theModel.addAttribute("movies",movie);
 		return "bookingseats";
 	}
+	
+	
 }

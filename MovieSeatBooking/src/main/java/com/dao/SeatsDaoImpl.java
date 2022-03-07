@@ -6,8 +6,6 @@ import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import javax.transaction.Transactional;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -17,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import com.context.AppContext;
 import com.entity.Booking;
+import com.entity.Movie;
 import com.entity.Seats;
 
 //@Transactional
@@ -55,6 +54,16 @@ public class SeatsDaoImpl implements SeatsDao {
 		CriteriaQuery<Booking> cq = cb.createQuery(Booking.class);
 		Root<Booking> root = cq.from(Booking.class);
 		cq.select(root);
+		Query query = session.createQuery(cq);
+		return query.getResultList();
+	}
+	
+	public List<Movie> getMovie(){
+		Session session = sessionFactory.getCurrentSession();
+		CriteriaBuilder cb = session.getCriteriaBuilder();
+		CriteriaQuery<Movie> cq = cb.createQuery(Movie.class);
+		Root<Movie> root = cq.from(Movie.class);
+		//cq.select(root);
 		Query query = session.createQuery(cq);
 		return query.getResultList();
 	}

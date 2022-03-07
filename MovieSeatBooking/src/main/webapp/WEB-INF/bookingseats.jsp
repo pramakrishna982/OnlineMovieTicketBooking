@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
+<%@page import="org.hibernate.criterion.Restrictions"%><%@page
+			import="org.hibernate.*"%> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -20,25 +22,26 @@
 </head>
 <body>
     <div class="movie-container">
-         <label>Select Language :</label>
-      <select id="language">
-          <option value="">Telugu </option>
-          <option value="">Tamil</option>
-          <option value=""> Hindi </option>
-          <option value="">English </option>
-          
-      </select>
-    </div>
-    <div class="movie-container">
-         <label>Select Movie :</label>
-      <select id="movie">
-          <option value="">Avengers:Endgame </option>
-          <option value="">Joker </option>
-          <option value="">Toy Story </option>
-          <option value="">The Lion </option>
-      </select>
-    </div>
-    
+    <label> Movie Name :</label>
+		<c:forEach var="movie" items="${movies}">
+			<label>${movie.name }</label>
+		
+		</c:forEach>
+	</div>
+    <form action="ticket">
+		  <label for="seatbooking">Set date :</label>		  
+		  <input type="date" id="showdate" >
+   </form>
+   
+   <div class="movie-container">
+   
+	Select Show Time: 
+	<input type="radio" name="showtime" value="" checked> 9:00 am
+	
+	<input type="radio" name="showtime" value=""> 12:00 pm
+	<input type="radio" name="showtime" value=""> 4:00 pm
+	<input type="radio" name="showtime" value=""> 9:00 pm
+	</div>
 	<%-- <div class="head-all">	
 		<%@ include file ="header.jsp" %>
 	</div>
