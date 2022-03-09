@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
-<%@page import="org.hibernate.criterion.Restrictions"%><%@page
-			import="org.hibernate.*"%> 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -22,33 +21,42 @@
 </head>
 <body>
     <div class="movie-container">
-    <label> Movie Name :</label>
-		<c:forEach var="movie" items="${movies}">
-			<label>${movie.name }</label>
-		
+     <label> Movie Name : </label> 
+		<c:forEach var="movie" items="${movie.book}">
+			<label>${movie.name}</label>
 		</c:forEach>
-	</div>
-    <form action="ticket">
+		
+<%-- 		<tr th:each="d : ${movie}"> --%>
+<%--         <form action="#" th:action="@{/booking/listseats}" th:object="${addForm}" method="post"> --%>
+<%--         <td th:text="${d.movie}">N/A</td> --%>
+<%--         <td th:text="${d.status}">N/A</td> --%>
+<%--         <td th:text="${d.modelName}">N/A</td> --%>
+<%--         <td th:text="${d.serialno}">N/A</td> --%>
+<%--         <td><input type="hidden" th:value="${d.address}" name="deviceIP"/><button type="submit" class="removebutton" name="action" value="remove">Remove</button></td> --%>
+<%--         <td th:if="${#fields.hasErrors('deviceIP')}" th:errors="*{deviceIP}">IP Error</td> --%>
+<%--         </form> --%>
+<!--     </tr>  -->
+	
+    <form action="http://localhost:8082/MVCInSpringWithHiberMySql/booking/submit" method="GET">
 		  <label for="seatbooking">Set date :</label>		  
-		  <input type="date" id="showdate" >
-   </form>
-   
-   <div class="movie-container">
+		  <input type="date" name="show_date" id="showdate" >
    
 	Select Show Time: 
-	<input type="radio" name="showtime" value="" checked> 9:00 am
+
+	<input type="radio" name="start_time" value="9:00 am" checked> 9:00 am
 	
-	<input type="radio" name="showtime" value=""> 12:00 pm
-	<input type="radio" name="showtime" value=""> 4:00 pm
-	<input type="radio" name="showtime" value=""> 9:00 pm
-	</div>
+	<input type="radio" name="start_time" value="12:00 pm"> 12:00 pm
+	<input type="radio" name="start_time" value="4:00 pm"> 4:00 pm
+	<input type="radio" name="start_time" value="9:00 pm"> 9:00 pm
+	
+	
 	<%-- <div class="head-all">	
 		<%@ include file ="header.jsp" %>
 	</div>
 	
 	<br><br>
 	 --%>
-	<form action="http://localhost:8082/MVCInSpringWithHiberMySql/booking/submit" method="GET">
+	
 	<div class="container">
 				<div class="sc">
 					<h1>SCREEN</h1><br>
@@ -305,6 +313,7 @@
 										<c:forEach var="Seats" items="${Seats.insert}">
 										<c:url var="insertLink" value="http://localhost:8080/MVCInSpringWithHiberMySql/booking/submit">
 										<c:param name="seat_no" value="${Seats.seat_no}" />
+										
 										</c:url>
 										<a href="${insertLink}">Book</a>
 										</c:forEach>
@@ -319,7 +328,7 @@
 				</div>
 			</div>
 		</form>
-				
+	</div>			
 	<%-- <%@ include file ="footer.jsp" %> --%>
 		
 	<!--my javascript-->

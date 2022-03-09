@@ -1,5 +1,6 @@
 package com.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Query;
@@ -17,13 +18,14 @@ import com.context.AppContext;
 import com.entity.Booking;
 import com.entity.Movie;
 import com.entity.Seats;
+import com.entity.ShowMovie;
 
 //@Transactional
 @Repository
 @Service
 public class SeatsDaoImpl implements SeatsDao {
+	
 	@Autowired
-
 	private SessionFactory sessionFactory;
 	private AppContext con;
 
@@ -46,18 +48,8 @@ public class SeatsDaoImpl implements SeatsDao {
 		return query.getResultList();
 		// return null;
 	}
-
-	public List<Booking> getAlltickets() {
-		// TODO Auto-generated method stub
-		Session session = sessionFactory.getCurrentSession();
-		CriteriaBuilder cb = session.getCriteriaBuilder();
-		CriteriaQuery<Booking> cq = cb.createQuery(Booking.class);
-		Root<Booking> root = cq.from(Booking.class);
-		cq.select(root);
-		Query query = session.createQuery(cq);
-		return query.getResultList();
-	}
 	
+	@Override
 	public List<Movie> getMovie(){
 		Session session = sessionFactory.getCurrentSession();
 		CriteriaBuilder cb = session.getCriteriaBuilder();
@@ -67,6 +59,8 @@ public class SeatsDaoImpl implements SeatsDao {
 		Query query = session.createQuery(cq);
 		return query.getResultList();
 	}
+	
+	@Override
 	public Seats getUpdate(int seat_no) {
 		// TODO Auto-generated method stub
 		Session session = (Session) con.sessionFactory();
@@ -76,7 +70,8 @@ public class SeatsDaoImpl implements SeatsDao {
 		session.close();
 		return null;
 	}
-
+	
+	@Override
 	public Seats getInsert(int seat_no, boolean seat_status) {
 		// TODO Auto-generated method stub
 		Seats s = new Seats();
@@ -94,5 +89,20 @@ public class SeatsDaoImpl implements SeatsDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public Booking getAlltickets(Date show_date, String time) {
+		// TODO Auto-generated method stub
+		Booking book= new Booking();
+		book.setShow_date(show_date);
+		book.setStart_time(time);
+		Session session = sessionFactory.getCurrentSession();
+		session.update(book);
+		return book;
+	}
 
+	public List<ShowMovie> getMovies(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

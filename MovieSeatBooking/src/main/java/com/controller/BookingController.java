@@ -1,5 +1,7 @@
 package com.controller;
 
+
+import java.util.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -13,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
+import com.dao.MovieDaoImpl;
 import com.dao.SeatsDaoImpl;
+import com.entity.ShowMovie;
 import com.entity.Booking;
 import com.entity.Movie;
 import com.entity.Seats;
@@ -26,14 +30,20 @@ import com.entity.Seats;
 public class BookingController {
 	@Autowired
 	private SeatsDaoImpl dao;
+	
+	@Autowired
+	private MovieDaoImpl  movieDaoImpl;
+	 
+//	@Autowired
+//	private BookingDaoImpl dao1;
 
 	@GetMapping(value = "/listseat")
-	public String SeatBooking(Model theModel) {
+	public String SeatBooking(Model theModel) {//Model is Interface ,theModel is object
 		System.out.println("In SeatBooking method ");
 		List<Seats> seat = dao.getAllSeats();
 		List<Movie> getmovie= dao.getMovie();
 		theModel.addAttribute("movies", getmovie);
-		theModel.addAttribute("seats", seat);
+		theModel.addAttribute("seats", seat);//seats is an attribute, seat is object
 		return "bookingseats";
 	}
 	
@@ -49,12 +59,34 @@ public class BookingController {
 	}
 	
 	@GetMapping(value = "/listtickets")
-	public String TicketBooking(Model theModel, Movie movie) {
-		System.out.println("ticketBooking  for arisha ");
-		List<Booking> ticket = dao.getAlltickets();
+	public String TicketBooking(Model theModel, Movie movie,Date date, String time){
+		System.out.println("ticketBooking  for team ");
+		Booking ticket = dao.getAlltickets(date, time);
+		
 		theModel.addAttribute("tickets", ticket);
-		theModel.addAttribute("movies",movie);
+		//theModel.addAttribute("movies",movie);
 		return "bookingseats";
+	}
+	
+	@RequestMapping(value = "/list")
+	public String listMovies(Model m) {
+		System.out.println(" inside Movie Controller inside List method");
+		List<ShowMovie> movies = movieDaoImpl.getShowMovie();
+		for(ShowMovie m1:movies) {
+			System.out.println(m1.toString());
+		}
+		m.addAttribute("movieslist", movies);
+		
+		return "index";
+	}
+	
+	@RequestMapping(value = "/book")
+	public String BookMovies(@RequestParam(value="btnSubmit") int id, Model m) {
+		System.out.println(" inside Movie Controller inside book method : " + id);
+		List<ShowMovie> movies =  movieDaoImpl.getMovies(id);
+		m.addAttribute("book", movies);
+		return "bookingseats";
+		
 	}
 	
 	

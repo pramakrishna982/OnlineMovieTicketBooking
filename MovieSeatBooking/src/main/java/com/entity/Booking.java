@@ -1,6 +1,6 @@
 package com.entity;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,23 +13,29 @@ public class Booking {
 	@Id
 	@Column(name = "booking_id")
 	private int booking_id;
+	
 	@Column(name = "movie_name")
 	private String movie_name;
-	
+
 	@Column(name = "language")
 	private String language;
-	
+
 	@Column(name = "show_date")
 	private Date show_date;
-	
+
 	@Column(name = "start_time")
 	private String start_time;
-	
-	@Column(name = "end_time")
-	private String end_time;
-	
+
 	@Column(name = "seat")
 	private String seat;
+
+	public int getBooking_id() {
+		return booking_id;
+	}
+
+	public void setBooking_id(int booking_id) {
+		this.booking_id = booking_id;
+	}
 
 	public String getMovie_name() {
 		return movie_name;
@@ -63,14 +69,6 @@ public class Booking {
 		this.start_time = start_time;
 	}
 
-	public String getEnd_time() {
-		return end_time;
-	}
-
-	public void setEnd_time(String end_time) {
-		this.end_time = end_time;
-	}
-
 	public String getSeat() {
 		return seat;
 	}
@@ -78,22 +76,5 @@ public class Booking {
 	public void setSeat(String seat) {
 		this.seat = seat;
 	}
-
-	public Booking(String movie_name, String language, Date show_date, String start_time, String end_time,
-			String seat) {
-		super();
-		this.movie_name = movie_name;
-		this.language = language;
-		this.show_date = show_date;
-		this.start_time = start_time;
-		this.end_time = end_time;
-		this.seat = seat;
-	}
-
-	public Booking() {
-		super();
-	}
-	
-	
 
 }
