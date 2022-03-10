@@ -6,6 +6,7 @@ import java.util.List;
 import com.entity.Booking;
 import com.entity.Movie;
 import com.entity.Seats;
+import com.entity.ShowMovie;
 
 public interface SeatsDao {
 
@@ -22,4 +23,6 @@ public interface SeatsDao {
 	Seats getUpdate(int seat_no);
 
 	List<Movie> getMovie();
+
+	List<ShowMovie> getMovies(int id);
 }

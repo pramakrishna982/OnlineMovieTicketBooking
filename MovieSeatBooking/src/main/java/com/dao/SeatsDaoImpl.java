@@ -83,12 +83,6 @@ public class SeatsDaoImpl implements SeatsDao {
 		System.out.println("Seat no from impl " + seat_no);
 		return s;
 	}
-
-	@Override
-	public Seats getSeat_No(int seat_no) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	@Override
 	public Booking getAlltickets(Date show_date, String time) {
@@ -101,6 +95,13 @@ public class SeatsDaoImpl implements SeatsDao {
 		return book;
 	}
 
+	@Override
+	public Seats getSeat_No(int seat_no) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
 	public List<ShowMovie> getMovies(int id) {
 		// TODO Auto-generated method stub
 		return null;

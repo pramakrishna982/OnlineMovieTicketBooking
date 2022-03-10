@@ -56,10 +56,14 @@ tr:hover {background-color: #242333; }
 tr:hover, td:active{color:white;}
 </style>
 <h1>Movies</h1>
-
+<!-- <div class="movie-container"> -->
+<!--      <label> Movie Name : </label>  -->
+<%-- 		<c:forEach var="movie" items="${book}"> --%>
+<%-- 			<label>${movie.name}</label> --%>
+<%-- 		</c:forEach> --%>
 <input type="text" id="keyword" onkeyup="myFunction()" placeholder="Search for movie names.." title="Type in a name">
 <br/>
-<form action="http://localhost:8082/MVCInSpringWithHiberMySql/booking/book" >
+<form action="http://localhost:8083/MovieSeatBooking/booking/book" >
 <table id="movieTable" class="center">
 
 <c:forEach var="ShowMovie" items="${movieslist}">

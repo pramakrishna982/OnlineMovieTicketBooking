@@ -9,9 +9,11 @@ import com.entity.ShowMovie;
 
 @Service
 public interface MovieDao {
-	public List <ShowMovie> getShowMovie();
-	//public ShowMovie getShowMovie(String name);
-	//public ShowMovie getMovies();
-	public List <ShowMovie> getMovies(int id);
+	public List<ShowMovie> getShowMovie();
+
+	// public ShowMovie getShowMovie(String name);
+	// public ShowMovie getMovies();
+	//public List<ShowMovie> getMovies(int id);
+
 	public ShowMovie getMovie(int id);
 }
