@@ -2,6 +2,7 @@ package com.entity;
 
 import java.util.Arrays;
 import java.util.Base64;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -52,7 +53,10 @@ public class ShowMovie {
 	
 	@Column(name="language")
 	private String Language;
-
+	
+	@Column(name = "show_date")
+	private Date show_date;
+	
 	public int getId() {
 		return id;
 	}
@@ -96,9 +100,18 @@ public class ShowMovie {
 	public void setImage(byte[] image) {
 		this.image = image;
 	}
+	
 
+	public Date getShow_date() {
+		return show_date;
+	}
+
+	public void setShow_date(Date show_date) {
+		this.show_date = show_date;
+	}
+	
 	public ShowMovie(int id, String name, String duration, byte[] image, String base64Image, String cast_names,
-			String language) {
+			String language, Date show_date) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -107,8 +120,9 @@ public class ShowMovie {
 		this.base64Image = base64Image;
 		this.cast_names = cast_names;
 		Language = language;
+		this.show_date = show_date;
 	}
-
+	
 	public ShowMovie() {
 		super();
 	}
@@ -116,6 +130,8 @@ public class ShowMovie {
 	@Override
 	public String toString() {
 		return "ShowMovie [id=" + id + ", name=" + name + ", duration=" + duration + ", image=" + Arrays.toString(image)
-				+ ", base64Image=" + base64Image + ", cast_names=" + cast_names + ", Language=" + Language + "]";
+				+ ", base64Image=" + base64Image + ", cast_names=" + cast_names + ", Language=" + Language
+				+ ", show_date=" + show_date + "]";
 	}
+
 }

@@ -1,6 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%><%@ page
 	isELIgnored="false"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<body>
+<html>
 <script type="text/javascript">
 function myFunction() {
 	  // Declare variables
@@ -54,7 +56,64 @@ table.center {
 tr:hover {background-color: #242333; }
 
 tr:hover, td:active{color:white;}
+
+
+*{ 
+margin:0; 
+padding:0; 
+} 
+nav
+{ 
+width:100%;
+height:17%; 
+display: flex; 
+margin-bottom:-4%;
+position:fixed;
+} 
+.Logo
+{ 
+width:50%; 
+height:50%; 
+background-color:#FFFACD; 
+background-image: linear-gradient(to right, #FFFACD , #B0E0E6);
+} 
+.Logo img
+{ 
+margin-top:3px;
+width:87px;
+ height:70px;
+ margin-left:20px; 
+} 
+.login
+{ 
+width:50%; 
+height:50%; 
+background-color:#B0E0E6; 
+text-align:right;
+background-image: linear-gradient(to right, #B0E0E6,#FFFACD);
+}
+ul{ 
+list-style: none; 
+padding:40px;
+} 
+li{  
+padding:25px; 
+display:inline; 
+}
 </style>
+<body>
+<nav>
+<div class="Logo">
+<img src="C:\Users\rkodakandla\git\repository\onlineticket\src\main\webapp\resource\img\Bomma.jpg"class="img-rounded">
+</div> 
+<div class="login"> 
+<ul> 
+<li><b><a href="rr.html">LOGIN</a></b></li> 
+<li><b><a href="manju.html">ADMIN LOGIN</a></b></li> 
+</ul> 
+</div>
+</nav>
+
 <h1>Movies</h1>
 <!-- <div class="movie-container"> -->
 <!--      <label> Movie Name : </label>  -->
@@ -78,3 +137,5 @@ tr:hover, td:active{color:white;}
 </c:forEach>
 </table>
 </form>
+</body>
+</html>

@@ -16,46 +16,47 @@
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/animate.css" type="text/css">
 	<link href='https://fonts.googleapis.com/css?family=Baloo' rel='stylesheet'>
 	<!-- <link rel="stylesheet" href="style.css" /> -->
-  
-    <title>Select Seats :: Bookmymovie.com</title>
-    
+ 
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <title>Select Seats :: Bookmymovie.com</title>     
 </head>
 <body>
-  
-
     <div class="movie-container">
      <label> Movie Name : </label> 
       <c:out value="${book}" />
-      <br>
-		<%-- <c:forEach var="movie" items="${book}">
-			<label>${movie.movie_name}</label>
-		</c:forEach> --%>
-		
-<!-- 	<div class="movie-container"> -->
-<!-- 			<label> Movie Name :</label> -->
-<%-- 			<c:forEach var="movie" items="${movies}"> --%>
-<%-- 			<label>${movie.name }</label> --%>
-	
+      <br> 
+     <%--  <label> Show Date : </label> 
+      <c:out value="${book}" />
+      <br>  --%>
+         
+	<label for="seatbooking">Set date :</label>		  
+	<input id="date_picker" type="date" max="2022-03-20">
+    <script language="javascript">
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0');
+        var yyyy = today.getFullYear();
 
-	
-	  <div class="movie-container">
-    <input type="date" name="show_date" id="showdate"  ><br>
-   
-	 </div>
+        today = yyyy + '-' + mm + '-' + dd;
+        $('#date_picker').attr('min',today);
+    </script>
+    <br>
 	<label for="seatbooking">Select Show Time:</label>	
 
 	<input type="radio" name="start_time" value="9:00 am" checked> 9:00 am
+	
 	<input type="radio" name="start_time" value="12:00 pm"> 12:00 pm
 	<input type="radio" name="start_time" value="4:00 pm"> 4:00 pm
 	<input type="radio" name="start_time" value="9:00 pm"> 9:00 pm
 	
+	
 	<%-- <div class="head-all">	
 		<%@ include file ="header.jsp" %>
 	</div>
-	<br><br>
-	 --%>
+	<br><br> --%>
+	
 	 </div>
-	<form action="http://localhost:8082/MVCInSpringWithHiberMySql/booking/submit" method="GET">
+	<form action="http://localhost:8082/MVCInSpringWithHiberMySql/booking/submit" method="GET"><br>
 	<div class="container">
 				<div class="sc">
 					<h1>SCREEN</h1><br>
@@ -333,7 +334,6 @@
 	<!--my javascript-->
 	<script src="<%=request.getContextPath()%>/resources/js/accordion.js"></script>
 	<!--/my javascript-->
-	
 		
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
