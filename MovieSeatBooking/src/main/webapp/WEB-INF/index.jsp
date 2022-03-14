@@ -63,7 +63,7 @@ tr:hover, td:active{color:white;}
 <%-- 		</c:forEach> --%>
 <input type="text" id="keyword" onkeyup="myFunction()" placeholder="Search for movie names.." title="Type in a name">
 <br/>
-<form action="http://localhost:8083/MovieSeatBooking/booking/book" >
+<form action="http://localhost:8082/MovieSeatBooking/booking/book" >
 <table id="movieTable" class="center">
 
 <c:forEach var="ShowMovie" items="${movieslist}">

@@ -86,15 +86,16 @@ public class BookingController {
 		return "index";
 	}
 	
-	@RequestMapping(value = "/book")
+	@RequestMapping(value = "/book" )
 	public String BookMovies(@RequestParam(value="btnSubmit") int id, Model m) 
 	{
 		System.out.println(" inside Movie Controller inside book method : " + id);
 		
 		ShowMovie movies =  movieDaoImpl.getMovie(id);
-		m.addAttribute("book", movies);
 		//System.out.println(movies.toString());
+		m.addAttribute("book", movies.getName());	
 		return "bookingseats";
+		//return "moviedetails";
 		
 	}
 }

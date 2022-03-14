@@ -77,14 +77,6 @@ public class ShowMovie {
 		this.duration = duration;
 	}
 
-//	public String getImage() {
-//		return image;
-//	}
-//
-//	public void setImage(String image) {
-//		this.image = image;
-//	}
-
 	public String getCast_names() {
 		return cast_names;
 	}
@@ -101,11 +93,14 @@ public class ShowMovie {
 		Language = language;
 	}
 
-	
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
 
-	public ShowMovie(String name, String duration, byte[] image, String base64Image, String cast_names,
+	public ShowMovie(int id, String name, String duration, byte[] image, String base64Image, String cast_names,
 			String language) {
 		super();
+		this.id = id;
 		this.name = name;
 		this.duration = duration;
 		this.image = image;
@@ -123,10 +118,4 @@ public class ShowMovie {
 		return "ShowMovie [id=" + id + ", name=" + name + ", duration=" + duration + ", image=" + Arrays.toString(image)
 				+ ", base64Image=" + base64Image + ", cast_names=" + cast_names + ", Language=" + Language + "]";
 	}
-
-	
-
-	
-	
-	
 }

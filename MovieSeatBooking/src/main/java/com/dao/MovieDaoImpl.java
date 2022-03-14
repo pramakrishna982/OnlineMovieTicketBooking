@@ -57,6 +57,7 @@ public class MovieDaoImpl implements MovieDao{
     
 	Session session = sessionFactory.getCurrentSession();
 	ShowMovie movie = session.byId(ShowMovie.class).load(id);
+	
 	//System.out.println(movie.toString());
 	return movie;
 	

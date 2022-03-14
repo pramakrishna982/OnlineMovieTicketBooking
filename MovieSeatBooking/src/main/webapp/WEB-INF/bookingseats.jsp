@@ -18,51 +18,44 @@
 	<!-- <link rel="stylesheet" href="style.css" /> -->
   
     <title>Select Seats :: Bookmymovie.com</title>
+    
 </head>
 <body>
+  
+
     <div class="movie-container">
      <label> Movie Name : </label> 
-		<c:forEach var="movie" items="${movie.book}">
-			<label>${movie.name}</label>
-		</c:forEach>
+      <c:out value="${book}" />
+      <br>
+		<%-- <c:forEach var="movie" items="${book}">
+			<label>${movie.movie_name}</label>
+		</c:forEach> --%>
 		
-	<div class="movie-container">
-			<label> Movie Name :</label>
-			<c:forEach var="movie" items="${movies}">
-			<label>${movie.name }</label>
-
-</c:forEach>
-<%-- 		<tr th:each="d : ${movie}"> --%>
-<%--         <form action="#" th:action="@{/booking/listseats}" th:object="${addForm}" method="post"> --%>
-<%--         <td th:text="${d.movie}">N/A</td> --%>
-<%--         <td th:text="${d.status}">N/A</td> --%>
-<%--         <td th:text="${d.modelName}">N/A</td> --%>
-<%--         <td th:text="${d.serialno}">N/A</td> --%>
-<%--         <td><input type="hidden" th:value="${d.address}" name="deviceIP"/><button type="submit" class="removebutton" name="action" value="remove">Remove</button></td> --%>
-<%--         <td th:if="${#fields.hasErrors('deviceIP')}" th:errors="*{deviceIP}">IP Error</td> --%>
-<%--         </form> --%>
-<!--     </tr>  -->
+<!-- 	<div class="movie-container"> -->
+<!-- 			<label> Movie Name :</label> -->
+<%-- 			<c:forEach var="movie" items="${movies}"> --%>
+<%-- 			<label>${movie.name }</label> --%>
 	
-    <form action="http://localhost:8083/MVCInSpringWithHiberMySql/booking/submit" method="GET">
-		  <label for="seatbooking">Set date :</label>		  
-		  <input type="date" name="show_date" id="showdate" >
+
+	
+	  <div class="movie-container">
+    <input type="date" name="show_date" id="showdate"  ><br>
    
-	Select Show Time: 
+	 </div>
+	<label for="seatbooking">Select Show Time:</label>	
 
 	<input type="radio" name="start_time" value="9:00 am" checked> 9:00 am
-	
 	<input type="radio" name="start_time" value="12:00 pm"> 12:00 pm
 	<input type="radio" name="start_time" value="4:00 pm"> 4:00 pm
 	<input type="radio" name="start_time" value="9:00 pm"> 9:00 pm
 	
-	
 	<%-- <div class="head-all">	
 		<%@ include file ="header.jsp" %>
 	</div>
-	
 	<br><br>
 	 --%>
-	
+	 </div>
+	<form action="http://localhost:8082/MVCInSpringWithHiberMySql/booking/submit" method="GET">
 	<div class="container">
 				<div class="sc">
 					<h1>SCREEN</h1><br>
@@ -340,6 +333,7 @@
 	<!--my javascript-->
 	<script src="<%=request.getContextPath()%>/resources/js/accordion.js"></script>
 	<!--/my javascript-->
+	
 		
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
