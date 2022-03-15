@@ -35,9 +35,25 @@ background-color:#264d73;
 }
 
 input{
+background-color: white;
+fontcolor : #242333;
+align: right;
 float:right;
-width:150px;
+position: fixed;
+width:200px;
 height:30px;
+}
+search{
+width:200px;
+height:60px;
+}
+
+h1{
+font-size: 35px;
+color: #F0E68C;
+position: fixed;
+width:100%;
+height:50px;
 }
 
 td {
@@ -53,7 +69,7 @@ table.center {
   margin-right: auto;
 }
 
-tr:hover {background-color: #242333; }
+tr:hover {background-color: ; }
 
 tr:hover, td:active{color:white;}
 
@@ -102,6 +118,7 @@ display:inline;
 }
 </style>
 <body>
+
 <nav>
 <div class="Logo">
 <img src="C:\Users\rkodakandla\git\repository\onlineticket\src\main\webapp\resource\img\Bomma.jpg"class="img-rounded">
@@ -112,16 +129,13 @@ display:inline;
 <li><b><a href="manju.html">ADMIN LOGIN</a></b></li> 
 </ul> 
 </div>
-</nav>
+</nav><br><br><br><br>
 
-<h1>Movies</h1>
-<!-- <div class="movie-container"> -->
-<!--      <label> Movie Name : </label>  -->
-<%-- 		<c:forEach var="movie" items="${book}"> --%>
-<%-- 			<label>${movie.name}</label> --%>
-<%-- 		</c:forEach> --%>
+<h1>Movies</h1><br><br><br><br>
+<div class= "search">
 <input type="text" id="keyword" onkeyup="myFunction()" placeholder="Search for movie names.." title="Type in a name">
-<br/>
+</div>
+<br><br><br>
 <form action="http://localhost:8082/MovieSeatBooking/booking/book" >
 <table id="movieTable" class="center">
 

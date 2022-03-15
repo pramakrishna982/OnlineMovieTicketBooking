@@ -18,7 +18,7 @@
 	<!-- <link rel="stylesheet" href="style.css" /> -->
  
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
-    <title>Select Seats :: Bookmymovie.com</title>     
+    <title> Select Seats :: BookShow.com </title>     
 </head>
 <body>
     <div class="movie-container">
@@ -28,22 +28,33 @@
      <%--  <label> Show Date : </label> 
       <c:out value="${book}" />
       <br>  --%>
-         
-	<label for="seatbooking">Set date :</label>		  
-	<input id="date_picker" type="date" max="2022-03-20">
-    <script language="javascript">
-        var today = new Date();
-        var dd = String(today.getDate()).padStart(2, '0');
-        var mm = String(today.getMonth() + 1).padStart(2, '0');
-        var yyyy = today.getFullYear();
+      <!-- <label> Todays Date : </label>  -->
+      <%-- <c:out value="${todaydate}" /> --%>
+     <%-- <input type="date" name="show_date" value='<c:out value="${todaydate}"/>' id="showdate" >  --%>
+     
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+     </script>
+     
+     <label for="seatbooking">Set date :</label>	
+     <input type="date" id="date" name="date">
+     <script>
+     var today = new Date();
+     var date = String(today.getDate()).padStart(2, '0');
+     var month = String(today.getMonth() + 1).padStart(2, '0');
+     var year = today.getFullYear();
 
-        today = yyyy + '-' + mm + '-' + dd;
-        $('#date_picker').attr('min',today);
+     today = year + '-' + month + '-' + date;
+     $('#date').attr('min',today);
+     $('#date').val(new Date().toJSON().slice(0,10));
     </script>
+    
+	
+	
     <br>
+    
 	<label for="seatbooking">Select Show Time:</label>	
 
-	<input type="radio" name="start_time" value="9:00 am" checked> 9:00 am
+	<input type="radio" name="start_time" value="9:00 am" > 9:00 am
 	
 	<input type="radio" name="start_time" value="12:00 pm"> 12:00 pm
 	<input type="radio" name="start_time" value="4:00 pm"> 4:00 pm
